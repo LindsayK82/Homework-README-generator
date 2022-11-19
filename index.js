@@ -5,38 +5,51 @@ const fs = require('fs');
 
 // created arrow function to generate HTML; added ${} to set data entered by user inside HTML fields
 const generateHTML = (data) =>
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README Generator</title>
-</head>
-<body>
-    <h1>${data.title}</h1>
-    <h2>Table of Contents</h2>
-    <p>Description</p>
-    <p>Installation</p>
-    <p>Usage</p>
-    <p>Contributors</p>
-    <p>Instructions</p>
-    <p>License</p>
-    <p>Github</p>
-    <p>Email</p>
+`
+# Table of Contents
 
+1. [ Title. ](#title) 
+2. [ Description. ](#description) 
+3. [ Installation Instructions. ](#installation) 
+4. [ Usage. ](#usage)
+5. [ Contributors. ](#contributors)
+6. [ License. ](#license)
+7. [ GitHub Information. ](#github)
+8. [ Email. ](#email)
 
-    <p>Description: ${data.description}</p>
-    <p>Installation Instructions: ${data.installation}</p>
-    <p>Usage: ${data.usage}</p>
-    <p>Contributors: ${data.contributors}</p>
-    <p>Instructions for Usage: ${data.instructions}</p>
-    <p>License: ${data.license}</p>
-    <p>GitHub Link: ${data.github}</p>
-    <p>Email: ${data.email}</p>
- <script src="./potential-enigma/index.js"></script>
-</body>
-</html>`
+<a name="title"></a>
+## Title
+${data.title}
+
+<a name="description"></a>
+## Description
+${data.description}
+
+<a name="installation"></a>
+## Installation Instructions
+${data.installation}
+
+<a name="usage"></a>
+## Usage
+${data.usage}
+
+<a name="contributors"></a>
+## Contributors
+${data.contributers}
+
+<a name="license"></a>
+## License
+${data.license}
+
+<a name="github"></a>
+## GitHub Information
+${data.github}
+
+<a name="email"></a>
+## Email
+${data.email}
+
+`
 
 // prompts created for user to follow to create file
 inquirer
@@ -92,7 +105,7 @@ inquirer
   .then((data) => {
     const html = generateHTML(data)
 
-    fs.writeFile('index.html', html, (err) =>
+    fs.writeFile('./output/readme.md', html, (err) =>
       err ? console.log(err) : console.log('Success!')
     );
   });
